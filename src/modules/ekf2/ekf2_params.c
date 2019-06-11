@@ -1357,6 +1357,59 @@ PARAM_DEFINE_FLOAT(EKF2_GPS_TAU, 10.0f);
 PARAM_DEFINE_FLOAT(EKF2_MOVE_TEST, 1.0f);
 
 /**
+ * united local frame origin GPS coordinates manual set switch
+ *
+ * set to 1 if manually define local frame origin 
+ * set to 0 if use EKF initialized origin
+ *
+ * @group EKF2
+ * @boolean
+ */
+PARAM_DEFINE_INT32(EKF2_LCL_ORG_SET, 0);
+
+/**
+ * manual set local frame origin latitude in 1e-7 degree
+ *
+ * the local frame origin GPS coordinates in 1e-7 degree unit
+ * only to be used when EKF2_LCL_ORG_SET is 1
+ *
+ * @group EKF2
+ * @min -90.00000000
+ * @max 90.00000000
+ * @decimal 8
+ * @unit degree
+ */
+PARAM_DEFINE_FLOAT(EKF2_LCL_ORG_LAT, 52.81707200f);
+
+/**
+ * manual set local frame origin longitude in 1e-7 degree
+ *
+ * the local frame origin GPS coordinates in 1e-7 degree unit
+ * only to be used when EKF2_LCL_ORG_SET is 1
+ *
+ * @group EKF2
+ * @min -180.00000000
+ * @max 180.00000000
+ * @decimal 8
+ * @unit degree
+ */
+PARAM_DEFINE_FLOAT(EKF2_LCL_ORG_LON, -4.12556900f);
+
+/**
+ * manual set local frame origin altitude in 10e-3 meter
+ *
+ * the local frame origin GPS coordinates in 10e-3 meter
+ * only to be used when EKF2_LCL_ORG_SET is 1
+ *
+ * @group EKF2
+ * @min -1000.0000
+ * @max 1000.0000
+ * @decimal 4
+ * @unit meter
+ */
+PARAM_DEFINE_FLOAT(EKF2_LCL_ORG_ALT, 73.0000f);
+
+/**
  * Required GPS health time on startup
  *
  * Minimum continuous period without GPS failure required to mark a healthy GPS status.
@@ -1369,59 +1422,3 @@ PARAM_DEFINE_FLOAT(EKF2_MOVE_TEST, 1.0f);
  * @reboot_required true
  */
 PARAM_DEFINE_FLOAT(EKF2_REQ_GPS_H, 10.0f);
-
-/**
- * united local frame origin GPS coordinates manual set switch
- *
- * set to 1 if manually define local frame origin 
- * set to 0 if use EKF initialized origin
- *
- * @group EKF2
- * @min 0
- * @max 2
- * @bit 0 use manual set origin
- * @bit 1 use ekf set origin
- */
-PARAM_DEFINE_INT32(EKF2_LCL_ORG_SET, 0);
-
-/**
- * manual set local frame origin latitude in 1e-7 degree
- *
- * the local frame origin GPS coordinates in 1e-7 degree unit
- * only to be used when EKF2_LCL_ORG_SET is 1
- *
- * @group EKF2
- * @min -900000000.0
- * @max 900000000.0
- * @decimal 1
- * @unit 1e-7 degree
- */
-PARAM_DEFINE_FLOAT(EKF2_LCL_ORG_LAT, 528170720.0f);
-
-/**
- * manual set local frame origin longitude in 1e-7 degree
- *
- * the local frame origin GPS coordinates in 1e-7 degree unit
- * only to be used when EKF2_LCL_ORG_SET is 1
- *
- * @group EKF2
- * @min -1800000000.0
- * @max 1800000000.0
- * @decimal 1
- * @unit 1e-7 degree
- */
-PARAM_DEFINE_FLOAT(EKF2_LCL_ORG_LON, -41255690.0f);
-
-/**
- * manual set local frame origin altitude in 10e-3 meter
- *
- * the local frame origin GPS coordinates in 10e-3 meter
- * only to be used when EKF2_LCL_ORG_SET is 1
- *
- * @group EKF2
- * @min -1000000.0
- * @max 1000000.0
- * @decimal 1
- * @unit 1e-3 meter
- */
-PARAM_DEFINE_FLOAT(EKF2_LCL_ORG_ALT, 73000.0f);

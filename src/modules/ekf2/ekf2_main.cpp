@@ -529,7 +529,7 @@ private:
 		_param_ekf2_req_gps_h,	///< Required GPS health time
 
 		//local frame origin coordinates manual set
-		(ParamInt<px4::params::EKF2_LCL_ORG_SET>)
+		(ParamExtInt<px4::params::EKF2_LCL_ORG_SET>)
 		_param_ekf2_lcl_org_set,
 
 		(ParamExtFloat<px4::params::EKF2_LCL_ORG_LAT>)
@@ -538,8 +538,7 @@ private:
 		(ParamExtFloat<px4::params::EKF2_LCL_ORG_LON>)
 		_param_ekf2_lcl_org_lon,
 
-		(ParamExtFloat<px4::params::EKF2_LCL_ORG_ALT>)
-		_param_ekf2_lcl_org_alt
+		(ParamExtFloat<px4::params::EKF2_LCL_ORG_ALT>) _param_ekf2_lcl_org_alt
 
 	)
 
