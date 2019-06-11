@@ -525,7 +525,21 @@ private:
 		(ParamExtFloat<px4::params::EKF2_MOVE_TEST>)
 		_param_ekf2_move_test,	///< scaling applied to IMU data thresholds used to determine if the vehicle is static or moving.
 
-		(ParamFloat<px4::params::EKF2_REQ_GPS_H>) _param_ekf2_req_gps_h	///< Required GPS health time
+		(ParamFloat<px4::params::EKF2_REQ_GPS_H>)
+		_param_ekf2_req_gps_h,	///< Required GPS health time
+
+		//local frame origin coordinates manual set
+		(ParamInt<px4::params::EKF2_LCL_ORG_SET>)
+		_param_ekf2_lcl_org_set,
+
+		(ParamExtFloat<px4::params::EKF2_LCL_ORG_LAT>)
+		_param_ekf2_lcl_org_lat,
+
+		(ParamExtFloat<px4::params::EKF2_LCL_ORG_LON>)
+		_param_ekf2_lcl_org_lon,
+
+		(ParamExtFloat<px4::params::EKF2_LCL_ORG_ALT>)
+		_param_ekf2_lcl_org_alt
 
 	)
 
@@ -631,7 +645,11 @@ Ekf2::Ekf2():
 	_param_ekf2_drag_noise(_params->drag_noise),
 	_param_ekf2_bcoef_x(_params->bcoef_x),
 	_param_ekf2_bcoef_y(_params->bcoef_y),
-	_param_ekf2_move_test(_params->is_moving_scaler)
+	_param_ekf2_move_test(_params->is_moving_scaler),
+	_param_ekf2_lcl_org_set(_params->lcl_org_set),
+	_param_ekf2_lcl_org_lat(_params->lcl_org_lat),
+	_param_ekf2_lcl_org_lon(_params->lcl_org_lon),
+	_param_ekf2_lcl_org_alt(_params->lcl_org_alt)
 {
 	_sensors_sub = orb_subscribe(ORB_ID(sensor_combined));
 
